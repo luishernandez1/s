@@ -5,7 +5,7 @@ class Conexion {
     public static function abrir_conexion(){
         if(!isset(self::$conexion)){
             try{
-                include_once 'config.inc.php';
+                include_once 'app/config.inc.php';
                 self::$conexion = new PDO('mysql:host=localhost;dbname=funsoft','root','cocodrilo123');
                 self::$conexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 self::$conexion -> exec("SET CHARACTER SET utf8");
