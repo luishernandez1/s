@@ -17,17 +17,18 @@
                         </div>
                         <div class="form-group">
                             <label>constraseña</label>
-                            <input type="password" class="form-control" name="password"placeholder="****">
+                            <input type="password" class="form-control"autocomplete="off" name="password"placeholder="****">
+                            
                        <?php
                                    $validador -> mostrar_error_password();
                                    ?>
                         </div>
                         <div class="form-group">
                             <label>repite la contraseña</label>
-                            <input type="password" class="form-control" name="password1" placeholder="****">
+                            <input type="password" class="form-control" autocomplete="off "name="password1" placeholder="****">
                         <?php
                                    $validador -> mostrar_error_password1();
                                    ?>
                         </div>
-                                                
-                        <!--<button type="submit" class="btn btn-primary" name="enviar"> enviar</button>-->
+<button type="reset" class="btn btn-default btn-primary">Limpiar formulario</button>               
+                        <button type="submit"class="btn btn-default btn-primary" name="enviar"> enviar</button>-->

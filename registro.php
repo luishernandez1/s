@@ -6,20 +6,22 @@ include_once 'app/Usuario.inc.php';
 include_once 'app/config.inc.php';
 
 
-if(isset($_POST['enviar'])){
-    Conexion :: abrir_conexion();
-    
-    $validador = new ValidadorRegistro($_POST['nombre'], $_POST['email'],
-            $_POST['password'], $_POST['password1'], Conexion:: obtener_conexion());
+if(isset($_POST['enviar'])){   
+    Conexion ::abrir_conexion();
+            $validador= new ValidadorRegistro($_POST['nombre'], $_POST['email'],
+            $_POST['password'], $_POST['password1'], Conexion :: obtener_conexion());          
+    //$validador = new ValidadorRegistro($_POST['nombre'], $_POST['email'],
+      //      $_POST['password'], $_POST['password1'], ,Conexion:: obtener_conexion());
 
     if($validador -> registro_valido()){
-        $usuario = new Usuario(' ', $validador->Get_Nombre(), $validador ->Get_Email(), $validador -> Get_Password(),'','');
+      
+       $usuario = new Usuario(' ', $validador->Get_Nombre(), $validador ->Get_Email(), $validador -> Get_Password(),'','');
         $usuario_insertado = Repositorio ::insertar_usuario(Conexion::obtener_conexion(),$usuario);
         
         if($usuario_insertado){
             //redigir a login
         }
-      
+     
     }
     Conexion:: cerrar_conexion();
 }
@@ -89,4 +91,4 @@ $titulo = "registro";
 
 <?php
             include_once 'plantillas/documentacion-cierre.inc.php';
-?>
+            ?>

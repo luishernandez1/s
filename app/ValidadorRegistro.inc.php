@@ -1,6 +1,6 @@
 <?php
-include_once 'app/Repositorio.inc.php';
-include_once 'app/Conexion.inc.php';
+include_once 'Repositorio.inc.php';
+include_once 'Conexion.inc.php';
 class ValidadorRegistro{
     
     private $aviso_inicio;
@@ -53,7 +53,7 @@ class ValidadorRegistro{
         if(strlen($nombre) > 24){
             return "el nombre no puede ocupar mas de 24 caracteres";
         }
-        if(Repositorio:: nombre_existente($conexion,$nombre))  {
+        if(RepositorioUsuario:: nombre_existente($conexion,$nombre))  {
             return"ya existe";
         }
         return $nombre;
@@ -64,7 +64,7 @@ class ValidadorRegistro{
          }else { 
              $this -> email = $email;
          }
-         if(Repositorio:: email_existe($conexion, $email)){
+         if(RepositorioUsuario:: email_existe($conexion, $email)){
              return"Este email ya esta en uso, prueba otro o <a href='#' >intente recuperar su contrasenia </a>";
          }
          return"";
@@ -135,6 +135,16 @@ class ValidadorRegistro{
          public function mostrar_error_password1(){
              if($this-> error_password1 !==""){
                  echo $this-> aviso_inicio . $this-> error_password1 . $this-> aviso_cierre;
+             }
+         }
+         public function registro_valido(){
+             if($this -> error_nombre=== "" &&
+                     $this -> error_email ==="" &&
+                     $this -> error_password ==="" &&
+                     $this -> error_password1 === ""){
+                 return true;
+             }else{
+                 return false;
              }
          }
          

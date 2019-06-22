@@ -1,5 +1,5 @@
 <?php
-include_once 'app/Conexion.inc.php';
+include_once 'Conexion.inc.php';
 class Usuario{
     private $Id_Usuario;
     private $nombre;
