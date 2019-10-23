@@ -5,6 +5,7 @@ include_once 'app/Usuario.inc.php';
 $titulo = "luis";
  include_once 'plantillas/documantacion-a.inc.php';
  include_once 'plantillas/navbar.inc.php';
+ 
 ?>
         <div class="container">
             <div class="jumbotron">
@@ -41,7 +42,7 @@ $titulo = "luis";
                         </div>
                         <div class="panel-body">
                             
-                            <p> aun no hay ninguna busqueda </p>
+                            <p>  </p>
                             
                         </div>
                     </div>

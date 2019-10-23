@@ -4,6 +4,7 @@ include_once 'app/Repositorio.inc.php';
 include_once 'app/ValidadorRegistro.inc.php';
 include_once 'app/Usuario.inc.php';
 include_once 'app/config.inc.php';
+include_once 'app/redireccion.inc.php';
 
 
 if(isset($_POST['enviar'])){   
@@ -15,11 +16,17 @@ if(isset($_POST['enviar'])){
 
     if($validador -> registro_valido()){
       
-       $usuario = new Usuario(' ', $validador->Get_Nombre(), $validador ->Get_Email(), $validador -> Get_Password(),'','');
-        $usuario_insertado = Repositorio ::insertar_usuario(Conexion::obtener_conexion(),$usuario);
+       $usuario = new Usuario(' ',
+               $validador->get_nombre(),
+               $validador ->get_email(),
+               password_hash($validador -> get_clave(),PASSWORD_DEFAULT),
+               '',
+               '');
+        $usuario_insertado =(RepositorioUsuario::insertar_usuario(Conexion::obtener_conexion(),$usuario));
         
         if($usuario_insertado){
             //redigir a login
+            redireccion::redirigir(ruta_registro_correcto. '?nombre='.$usuario -> Get_Nombre());
         }
      
     }

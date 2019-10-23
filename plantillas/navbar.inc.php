@@ -17,13 +17,13 @@ Conexion :: abrir_conexion();
                         <span class="icon-bar"></span>
 
                     </button>
-                    <a class="navbar-brand" href="#">pagina</a>
+                    <a class="navbar-brand" href="#">TIENDA</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">entradas</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> favoritos</a></li>
-                        <li><a href="#">huate</a></li>
+                        <li><a href="#">Postres</a></li>
+                        <li><a href="pasteles.php"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Pasteles </a></li>
+                        <li><a href="#">otra cosa</a></li>
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">

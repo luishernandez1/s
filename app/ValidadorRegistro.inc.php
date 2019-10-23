@@ -9,6 +9,7 @@ class ValidadorRegistro{
     private $nombre;
     private $email;
     private $password;
+    private $password1;
     
     private $error_nombre;
     private $error_email;
@@ -22,7 +23,7 @@ class ValidadorRegistro{
       
         $this -> nombre = " ";
         $this -> email = " ";
-        $this -> password= " ";
+        $this -> clave= " ";
         
     $this -> error_nombre = $this -> validar_nombre($conexion,$nombre);
     $this -> error_email = $this -> validar_email($conexion,$email);
@@ -30,7 +31,7 @@ class ValidadorRegistro{
     $this -> error_password1 = $this -> validar_password1($password1,$password);
     
     if($this -> error_password === "" && $this -> error_password1 === ""){
-        $this -> password = $password;
+        $this -> clave = $password;
     }
     }
     private function variable_iniciada($variable){
@@ -41,7 +42,7 @@ class ValidadorRegistro{
         }
         }
         
-        private function validar_nombre($conexion, $nombre){
+        private function validar_nombre($conexion,$nombre){
         if(!$this -> variable_iniciada($nombre)){
             return "debes escribir un nombre de usuario";
         } else{
@@ -53,8 +54,9 @@ class ValidadorRegistro{
         if(strlen($nombre) > 24){
             return "el nombre no puede ocupar mas de 24 caracteres";
         }
-        if(RepositorioUsuario:: nombre_existente($conexion,$nombre))  {
-            return"ya existe";
+        if(RepositorioUsuario::nombre_existente($conexion,$nombre))  {
+            
+            return "ya existe";
         }
         return $nombre;
      }
@@ -93,7 +95,10 @@ class ValidadorRegistro{
              return $this-> nombre;
          }
          public function get_email() {
-             return $this-> nombre;
+             return $this-> email;
+         }
+         public function get_clave(){
+             return $this -> clave;
          }
          public function get_error_nombre() {
              return $this-> error_nombre;
@@ -142,9 +147,9 @@ class ValidadorRegistro{
                      $this -> error_email ==="" &&
                      $this -> error_password ==="" &&
                      $this -> error_password1 === ""){
-                 return true;
-             }else{
                  return false;
+             }else{
+                 return true;
              }
          }
          
