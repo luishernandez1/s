@@ -22,23 +22,25 @@ if(isset($_POST['enviar'])){
                password_hash($validador -> get_clave(),PASSWORD_DEFAULT),
                '',
                '');
-        $usuario_insertado =(RepositorioUsuario::insertar_usuario(Conexion::obtener_conexion(),$usuario));
+        $usuario_insertado = (RepositorioUsuario::insertar_usuario(Conexion::obtener_conexion(),$usuario));
         
         if($usuario_insertado){
             //redigir a login
             redireccion::redirigir(ruta_registro_correcto. '?nombre='.$usuario -> Get_Nombre());
+        }else{
+            echo'intentalo denuevo perro';
         }
      
     }
     Conexion:: cerrar_conexion();
 }
 $titulo = "registro";
- include_once 'plantillas/documantacion-a.inc.php';
- include_once 'plantillas/navbar.inc.php';
+ include_once 'app/plantillas/documentacion-a.inc.php';
+ include_once 'app/plantillas/navbar.inc.php';
 ?>
 <div class="container">
     <div class="jumbotron">
-        <h1 class="text-center"> Formulario de registro</h1>
+        <h1 class="text-center" class="text-secondary"> Unete a nosotros!!</h1>
     </div>
 </div>
 
@@ -54,12 +56,14 @@ $titulo = "registro";
                 <div class="panel-body">
                     <br>
                     <p class="text-justify">
-                        si quieres tener una cuenta deberas rellenar los 
-                        requisitos que se te van a solicitar, por favor 
-                        realizalo para unirte al blog.
+                        No te pierdas la oportunidad de poder
+                        probar nuestro delicioso sazón, unete y 
+                        prueba nuestra nueva plataforma donde te ofrecemos
+                        un excelente servicio sin olvidarnos de darle el toque
+                        especial a nuestros alimentos.
                     </p>
                     <br>
-                    <a href="#">
+                    <a href="login.php">
                         ¿Ya tienes cuenta?
                     </a>
                     <br>
@@ -83,9 +87,9 @@ $titulo = "registro";
                     <form role="form" method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
                         <?php
                         if(isset($_POST['enviar'])){
-                            include_once 'plantillas/registro_validado.inc.php';
+                            include_once 'app/plantillas/registro_validado.inc.php';
                         }else{
-                            include_once 'plantillas/registro_vacio.inc.php';
+                            include_once 'app/plantillas/registro_vacio.inc.php';
                         }
                         
                                 ?>
@@ -97,5 +101,5 @@ $titulo = "registro";
 </div>
 
 <?php
-            include_once 'plantillas/documentacion-cierre.inc.php';
+            include_once 'app/plantillas/documentacion-cierre.inc.php';
             ?>
